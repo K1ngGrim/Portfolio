@@ -1,0 +1,11 @@
+.scene {
+  perspective: 900px;
+
+}
+
+.card {
+  transform: rotateY(-12deg) rotateX(10deg);
+  transition: 0.4s ease;
+  transform-style: preserve-3d;
+  background-color: #0f172a;
+}

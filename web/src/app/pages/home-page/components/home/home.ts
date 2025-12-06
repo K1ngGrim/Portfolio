@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import {NgClass, NgForOf} from '@angular/common';
+import {CmdAnimationWindow} from '../cmd-animation-window/cmd-animation-window';
 
 interface Project {
   title: string;
@@ -13,7 +14,8 @@ interface Project {
   selector: 'app-home-page',
   imports: [
     NgClass,
-    NgForOf
+    NgForOf,
+    CmdAnimationWindow
   ],
   templateUrl: './home.html',
   styleUrl: './home.scss',
