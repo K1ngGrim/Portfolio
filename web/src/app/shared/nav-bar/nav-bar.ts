@@ -13,6 +13,6 @@ import {RouterLink} from '@angular/router';
 })
 export class NavBar {
 
-  navItems: string[] = ['Home', 'Skills', 'Projekte', 'Kontakt'];
+  navItems: string[] = ['Home', 'Work', 'About Me', 'Contact'];
 
 }
