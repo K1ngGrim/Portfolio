@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import {NgClass, NgForOf} from '@angular/common';
+import {NgClass, NgForOf, NgOptimizedImage} from '@angular/common';
 import {CmdAnimationWindow} from '../cmd-animation-window/cmd-animation-window';
 
 interface Project {
@@ -15,7 +15,8 @@ interface Project {
   imports: [
     NgClass,
     NgForOf,
-    CmdAnimationWindow
+    CmdAnimationWindow,
+    NgOptimizedImage
   ],
   templateUrl: './home.html',
   styleUrl: './home.scss',
