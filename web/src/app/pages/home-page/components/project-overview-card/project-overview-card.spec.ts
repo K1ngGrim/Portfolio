@@ -1,6 +1,6 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import {ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { ProjectOverviewCard } from './project-overview-card';
+import {ProjectOverviewCard} from './project-overview-card';
 
 describe('ProjectOverviewCard', () => {
   let component: ProjectOverviewCard;

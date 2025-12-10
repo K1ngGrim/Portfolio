@@ -27,7 +27,8 @@
               {
                 "glob": "**/*",
                 "input": "public"
-              }
+              },
+              { "glob": "mdi.svg", "input": "./node_modules/@mdi/angular-material", "output": "./assets" }
             ],
             "styles": [
               "src/styles.scss"

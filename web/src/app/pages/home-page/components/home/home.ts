@@ -1,6 +1,5 @@
-import { Component } from '@angular/core';
-import {NgClass, NgForOf, NgOptimizedImage} from '@angular/common';
-import {CmdAnimationWindow} from '../cmd-animation-window/cmd-animation-window';
+import {Component} from '@angular/core';
+import {MatIcon} from '@angular/material/icon';
 
 interface Project {
   title: string;
@@ -13,15 +12,27 @@ interface Project {
 @Component({
   selector: 'app-home-page',
   imports: [
-    NgClass,
-    NgForOf,
-    CmdAnimationWindow,
-    NgOptimizedImage
+    MatIcon
   ],
   templateUrl: './home.html',
   styleUrl: './home.scss',
 })
 export class Home {
+
+  links: { name: string; icon: string; url: string }[] = [
+    {
+      name: 'GitHub',
+      icon: 'github',
+      url: 'https://github.com/k1ngGrim'
+    },
+    {
+      name: 'LinkedIn',
+      icon: 'linkedin',
+      url: 'https://www.linkedin.com/in/flor1an-ka1ser/'
+    }
+  ]
+
+
 
   navItems: string[] = ['Home', 'Skills', 'Projekte', 'Kontakt'];
 

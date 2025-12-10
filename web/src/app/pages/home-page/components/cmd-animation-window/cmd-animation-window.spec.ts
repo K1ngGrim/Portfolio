@@ -1,6 +1,6 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import {ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { CmdAnimationWindow } from './cmd-animation-window';
+import {CmdAnimationWindow} from './cmd-animation-window';
 
 describe('CmdAnimationWindow', () => {
   let component: CmdAnimationWindow;

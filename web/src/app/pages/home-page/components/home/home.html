@@ -1,38 +1,188 @@
-<div class="flex flex-col items-center justify-center text-center relative h-96">
-  <div class="relative z-10 max-w-4xl mx-auto space-y-6">
-    <div class="grid grid-cols-3 gap-4">
+<section class="relative h-screen max-h-[700px] flex flex-col overflow-hidden">
 
+  <!-- HERO CONTENT -->
+  <div class="flex-1 flex items-center">
+    <div class="w-full max-w-7xl mx-auto px-8">
 
-      <div class="">
-        <h2 class="text-6xl md:text-6xl font-bold tracking-tight text-white leading-[1.1]">
-          Florian
-          <span class="text-gradient">Kaiser</span>
-        </h2>
+      <div class="grid grid-cols-1 md:grid-cols-[1fr_auto_1fr] gap-x-24 items-center">
 
-        <div>
-          <span class="material-icons text-sm">github</span>
+      <!-- LEFT -->
+        <div class="space-y-8 text-center md:text-left">
+          <h1 class="text-5xl md:text-8xl font-bold tracking-tight text-white leading-[1.05] mb-2">
+            Florian
+            <span class="text-gradient block">Kaiser</span>
+          </h1>
+
+          <div class="flex justify-center md:justify-start gap-3 text-gray-400">
+            @for (entry of links; track entry.name) {
+              <a [href]="entry.url" target="_blank" rel="noopener noreferrer">
+                <mat-icon style="width: 32px; height: 32px;" [svgIcon]="entry.icon"></mat-icon>
+              </a>
+            }
+          </div>
+        </div>
+
+        <!-- CENTER -->
+        <div class="flex justify-center">
+          <div
+            class="glitch-container"
+            style="max-width: 340px; max-height: 340px; aspect-ratio: 1; border-radius: 2rem;"
+          >
+            <div class="glitch-layers">
+              <img src="/res/images/oben.png" class="layer red" alt="">
+              <img src="/res/images/unten.png" class="layer cyan" alt="">
+            </div>
+
+            <img src="/res/images/unten.png" class="pixelated" alt="">
+            <img src="/res/images/oben.png" class="original" alt="">
+          </div>
+        </div>
+
+        <!-- RIGHT -->
+        <div class="space-y-6 text-center md:text-left">
+          <span class="uppercase tracking-[0.3em] text-xs text-indigo-400">
+            Introducing
+          </span>
+
+          <h3 class="text-3xl font-semibold text-white">
+            Software Developer
+          </h3>
+
+          <p class="text-gray-400 leading-relaxed max-w-md mx-auto md:mx-0">
+            I build scalable software systems with a strong focus on clean
+            architecture, performance and modern user experiences.
+          </p>
+
+          <a
+            href="#story"
+            class="inline-flex items-center gap-3 px-7 py-3 rounded-full
+                   bg-indigo-600 hover:bg-indigo-500 text-white font-medium
+                   transition shadow-xl shadow-indigo-600/30"
+          >
+            My Story →
+          </a>
         </div>
 
       </div>
+    </div>
+  </div>
+</section>
 
-      <div class="pictures col">
-        <div class="glitch-container">
-          <div class="glitch-layers">
-            <img src="/res/images/oben.png" class="layer red" alt="Glitch Rot">
-            <img src="/res/images/unten.png" class="layer cyan" alt="Glitch Cyan">
+<section class="relative">
+  <div class="max-w-7xl mx-auto px-8">
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
+
+      <!-- SKILLS -->
+      <!-- SKILLS -->
+      <a
+        href="#skills"
+        class="group rounded-2xl p-8 bg-white/5 border border-white/10
+         hover:border-indigo-500/40 transition"
+      >
+        <h4 class="text-xl font-semibold text-white mb-6">
+          Skills
+        </h4>
+
+        <div class="space-y-4">
+
+          <!-- Angular -->
+          <div>
+            <div class="flex justify-between text-sm mb-1">
+              <span class="text-gray-300">Angular</span>
+              <span class="text-gray-500">Advanced</span>
+            </div>
+            <div class="h-1.5 rounded-full bg-white/10 overflow-hidden">
+              <div class="h-full w-[85%] bg-indigo-500/70 rounded-full"></div>
+            </div>
           </div>
 
-          <img src="/res/images/unten.png" class="pixelated" alt="Verpixeltes Bild">
+          <!-- TypeScript -->
+          <div>
+            <div class="flex justify-between text-sm mb-1">
+              <span class="text-gray-300">TypeScript</span>
+              <span class="text-gray-500">Advanced</span>
+            </div>
+            <div class="h-1.5 rounded-full bg-white/10 overflow-hidden">
+              <div class="h-full w-[80%] bg-indigo-500/70 rounded-full"></div>
+            </div>
+          </div>
 
-          <img src="/res/images/oben.png" class="original" alt="Originalbild">
+          <!-- C++ -->
+          <div>
+            <div class="flex justify-between text-sm mb-1">
+              <span class="text-gray-300">C++</span>
+              <span class="text-gray-500">Intermediate</span>
+            </div>
+            <div class="h-1.5 rounded-full bg-white/10 overflow-hidden">
+              <div class="h-full w-[65%] bg-indigo-500/70 rounded-full"></div>
+            </div>
+          </div>
+
+          <!-- Embedded -->
+          <div>
+            <div class="flex justify-between text-sm mb-1">
+              <span class="text-gray-300">Embedded Systems</span>
+              <span class="text-gray-500">Advanced</span>
+            </div>
+            <div class="h-1.5 rounded-full bg-white/10 overflow-hidden">
+              <div class="h-full w-[75%] bg-indigo-500/70 rounded-full"></div>
+            </div>
+          </div>
+
         </div>
-      </div>
+
+        <span class="inline-block mt-6 text-indigo-400 group-hover:translate-x-1 transition">
+          View skills →
+        </span>
+      </a>
 
 
+      <!-- PROJECTS -->
+      <a
+        href="#projects"
+        class="group rounded-2xl p-8 bg-white/5 border border-white/10
+               hover:border-indigo-500/40 transition"
+      >
+        <h4 class="text-xl font-semibold text-white mb-4">
+          Projects
+        </h4>
+
+        <p class="text-gray-400 leading-relaxed">
+          Selected personal and professional projects ranging from embedded
+          systems to scalable web applications.
+        </p>
+
+        <span class="inline-block mt-6 text-indigo-400 group-hover:translate-x-1 transition">
+          View projects →
+        </span>
+      </a>
+
+      <!-- FOCUS -->
+      <a
+        href="#focus"
+        class="group rounded-2xl p-8 bg-white/5 border border-white/10
+               hover:border-indigo-500/40 transition"
+      >
+        <h4 class="text-xl font-semibold text-white mb-4">
+          Focus
+        </h4>
+
+        <p class="text-gray-400 leading-relaxed">
+          Clean architecture, developer experience, and long-term maintainable
+          software systems.
+        </p>
+
+        <span class="inline-block mt-6 text-indigo-400 group-hover:translate-x-1 transition">
+          Learn more →
+        </span>
+      </a>
 
     </div>
   </div>
-</div>
+</section>
+
+
 <!--
 <div class="flex flex-col items-center justify-center text-center relative h-96">
   <div class="relative z-10 max-w-4xl mx-auto space-y-6">

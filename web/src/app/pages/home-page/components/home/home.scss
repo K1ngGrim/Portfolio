@@ -13,6 +13,7 @@
 
 /* --- GLOBALE SETUP --- */
 .glitch-container {
+  transform: rotateZ(-6deg); /* Leichte Neigung für coolen Effekt */
   position: relative;
   width: 600px; /* PASSE HIER BREITE UND HÖHE AN */
   height: 400px; /* PASSE HIER BREITE UND HÖHE AN */
