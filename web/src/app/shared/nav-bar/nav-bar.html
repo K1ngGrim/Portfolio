@@ -1,12 +1,15 @@
-<div class="fixed top-6 left-1/2 -translate-x-1/2 z-50">
-  <nav class="glass-panel rounded-full px-2 py-1.5 flex items-center gap-1 shadow-2xl shadow-indigo-500/10">
-    @for (item of navItems; track item; let i = $index) {
-      <span
-        [ngClass]="i === 0
-          ? 'px-5 py-2.5 rounded-full text-sm font-medium text-white bg-white/10'
-          : 'px-5 py-2.5 rounded-full text-sm font-medium text-slate-400 hover:text-white hover:bg-white/5'">
-        {{ item }}
-      </span>
-    }
-  </nav>
-</div>
+<nav
+  class="glass-panel rounded-full px-2 py-1.5
+         flex items-center gap-1
+         shadow-2xl shadow-indigo-500/10
+         sticky top-0"
+>
+  @for (item of navItems; track item; let i = $index) {
+    <span
+      [ngClass]="i === 0
+        ? 'px-5 py-2.5 rounded-full text-sm font-medium text-white bg-white/10'
+        : 'px-5 py-2.5 rounded-full text-sm font-medium text-slate-400 hover:text-white hover:bg-white/5'">
+      {{ item }}
+    </span>
+  }
+</nav>

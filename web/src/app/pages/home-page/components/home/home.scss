@@ -9,3 +9,116 @@
   transform-style: preserve-3d;
   background-color: #0f172a;
 }
+
+
+/* --- GLOBALE SETUP --- */
+.glitch-container {
+  position: relative;
+  width: 600px; /* PASSE HIER BREITE UND HÖHE AN */
+  height: 400px; /* PASSE HIER BREITE UND HÖHE AN */
+  overflow: hidden;
+}
+
+.glitch-container img, .glitch-layers {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* --- GLITCH EBENEN --- */
+
+.glitch-layers {
+  z-index: 4; /* Liegt über dem Originalbild */
+  mix-blend-mode: hard-light; /* Entscheidend für den Glitch-Farb-Effekt */
+}
+
+/* Der Pixel-Layer liegt obenauf und wird nur kurz transparent */
+.pixelated {
+  z-index: 5;
+  /* Damit das Pixel-Bild auch wirklich scharf bleibt und nicht weichgezeichnet wird */
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
+}
+
+/* Die Glitch-Ebenen bekommen Farbfilter */
+.layer {
+  opacity: 0.8;
+  animation-timing-function: step-end; /* Wichtig: Harte Sprünge, keine sanften Übergänge */
+  animation-iteration-count: infinite;
+}
+
+/* Roter Kanal */
+.layer.red {
+  /* Filtern auf rote/magenta Farbtöne */
+  filter: sepia(100%) saturate(200%) hue-rotate(330deg);
+  animation: glitch-move 5s, glitch-clip 5s;
+  animation-delay: 0s, 1s; /* Startet minimal früher */
+}
+
+/* Cyan/Blauer Kanal */
+.layer.cyan {
+  /* Filtern auf Cyan/Blautöne */
+  filter: sepia(100%) saturate(200%) hue-rotate(180deg);
+  animation: glitch-move 5s, glitch-clip 5s;
+  animation-delay: 1s, 0; /* Startet minimal später */
+}
+
+/* --- ANIMATIONEN --- */
+
+/* 1. Glitch-Move: Verschiebt die Farbkanäle horizontal */
+@keyframes glitch-move {
+  0%, 20.9% { transform: translate(0, 0); } /* Ruhephase */
+  21% { transform: translate(-5px, 0); } /* Ruck nach links */
+  22% { transform: translate(5px, 0); } /* Ruck nach rechts */
+  23% { transform: translate(0, 0); } /* Ende des kurzen Rucks */
+}
+
+/* 2. Glitch-Clip: Simuliert horizontale Scanline-Fehler */
+@keyframes glitch-clip {
+  0%, 25.9% { clip-path: inset(0 0 0 0); } /* Ruhephase: Ganzes Bild sichtbar */
+  26% { clip-path: inset(10% 0 70% 0); } /* Schmale horizontale Streifen freischneiden */
+  27% { clip-path: inset(50% 0 10% 0); } /* Andere Streifen freischneiden */
+  28% { clip-path: inset(0 0 0 0); } /* Zurück zur Ruhephase */
+}
+
+@keyframes glitch-clip-var {
+  0%, 25.9% { clip-path: inset(0 0 0 0); } /* Ruhephase: Ganzes Bild sichtbar */
+  26% { clip-path: inset(50% 0 10% 0); } /* Schmale horizontale Streifen freischneiden */
+  27% { clip-path: inset(10% 0 70% 0);  } /* Andere Streifen freischneiden */
+  28% { clip-path: inset(0 0 0 0); } /* Zurück zur Ruhephase */
+}
+
+/* 3. Pixel-Glitch: Lässt den Pixel-Layer kurz aussetzen, um den Glitch stärker zu zeigen */
+.pixelated {
+  animation: glitch-clip 5s step-end infinite, glitch-clip-var 5s step-end infinite, pixel-glitch 5s infinite;
+  animation-delay: 0s, 2.5s, 0s;
+}
+
+@keyframes pixel-glitch {
+  0%, 24.9% {
+    opacity: 1; /* Normalzustand: Komplett sichtbar */
+    transform: translate(0, 0);
+  }
+  25% {
+    opacity: 0.1; /* Plötzliches Fast-Verschwinden */
+    transform: translate(15px, 0); /* Horizontaler Sprung */
+  }
+  26% {
+    opacity: 0.8;
+    transform: translate(-10px, 0);
+  }
+  27% {
+    opacity: 0.3;
+    transform: translate(5px, 0);
+  }
+  28% {
+    opacity: 1; /* Ende des Glitchs */
+    transform: translate(0, 0);
+  }
+  100% {
+    opacity: 1; /* Pause */
+  }
+}
