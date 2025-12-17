@@ -1,6 +1,5 @@
 import {Component} from '@angular/core';
 import {MatIcon} from '@angular/material/icon';
-import {NgClass, NgForOf} from '@angular/common';
 
 interface Project {
   title: string;
@@ -13,9 +12,7 @@ interface Project {
 @Component({
   selector: 'app-home-page',
   imports: [
-    MatIcon,
-    NgClass,
-    NgForOf
+    MatIcon
   ],
   templateUrl: './home.html',
   styleUrl: './home.scss',
