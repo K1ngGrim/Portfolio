@@ -1,20 +1,11 @@
 import {Component, inject} from '@angular/core';
-import {NgClass, NgOptimizedImage} from '@angular/common';
 import {ProjectData} from '../../../../data/services/project-data';
-
-interface Project {
-  title: string;
-  desc: string;
-  tags: string[];
-  color: string;
-  link?: string;
-}
+import {ProjectCard} from '../project-card/project-card';
 
 @Component({
   selector: 'app-projects',
   imports: [
-    NgClass,
-    NgOptimizedImage
+    ProjectCard
   ],
   templateUrl: './projects.html',
   styleUrl: './projects.scss',
