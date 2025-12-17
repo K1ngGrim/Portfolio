@@ -1,0 +1,7 @@
+﻿services:
+  portfolio.api:
+    image: portfolio.api
+    build:
+      context: .
+      dockerfile: Portfolio.Api/Dockerfile
+
