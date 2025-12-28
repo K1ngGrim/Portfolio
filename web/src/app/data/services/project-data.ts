@@ -1,9 +1,18 @@
 import {Injectable, signal} from '@angular/core';
+import {SkillLevel} from '../../pages/home-page/components/skill-entry/skill-entry';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ProjectData {
+
+  skills = signal<{name: string, level: SkillLevel}[]>([
+    { name: 'Machine Learning', level: SkillLevel.ADVANCED },
+    { name: 'Web Development', level: SkillLevel.ADVANCED },
+    { name: 'Embedded Systems', level: SkillLevel.INTERMEDIATE },
+  ]);
+
+
 
   categories = signal([
     {
@@ -47,7 +56,8 @@ export class ProjectData {
       ],
       imgSrc: null,
       noImage: true,
-      category: ProjectCategory.ACADEMIC
+      category: ProjectCategory.ACADEMIC,
+      content: "thesis-word-addin.md"
     },
     {
       id: "whistledrop",
@@ -83,6 +93,7 @@ export interface Project {
   imgSrc: string | null;
   noImage?: boolean;
   category: ProjectCategory;
+  content?: string;
 }
 
 enum ProjectCategory {

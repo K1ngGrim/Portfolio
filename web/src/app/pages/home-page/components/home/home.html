@@ -1,4 +1,4 @@
-<section class="relative h-screen md:max-h-[450px] xl:max-h-[600px] flex flex-col overflow-hidden">
+<section class="relative h-screen max-h-[450px] flex flex-col overflow-hidden">
 
   <!-- HERO CONTENT -->
   <div class="flex-1 flex items-center">
@@ -51,14 +51,15 @@
             architecture, performance and modern user experiences.
           </p>
 
-          <a
-            href="#story"
-            class="inline-flex items-center gap-3 px-7 py-3 rounded-full
+          <span
+            routerLink="/about"
+            class="clickable inline-flex items-center gap-3 px-7 py-3 rounded-full
                    bg-indigo-600 hover:bg-indigo-500 text-white font-medium
                    transition shadow-xl shadow-indigo-600/30"
           >
-            My Story →
-          </a>
+            My Story
+            <mat-icon>arrow_forward</mat-icon>
+          </span>
         </div>
 
       </div>
@@ -84,49 +85,9 @@
 
         <div class="space-y-4">
 
-          <!-- Angular -->
-          <div>
-            <div class="flex justify-between text-sm mb-1">
-              <span class="text-gray-300">Angular</span>
-              <span class="text-gray-500">Advanced</span>
-            </div>
-            <div class="h-1.5 rounded-full bg-white/10 overflow-hidden">
-              <div class="h-full w-[85%] bg-indigo-500/70 rounded-full"></div>
-            </div>
-          </div>
-
-          <!-- TypeScript -->
-          <div>
-            <div class="flex justify-between text-sm mb-1">
-              <span class="text-gray-300">TypeScript</span>
-              <span class="text-gray-500">Advanced</span>
-            </div>
-            <div class="h-1.5 rounded-full bg-white/10 overflow-hidden">
-              <div class="h-full w-[80%] bg-indigo-500/70 rounded-full"></div>
-            </div>
-          </div>
-
-          <!-- C++ -->
-          <div>
-            <div class="flex justify-between text-sm mb-1">
-              <span class="text-gray-300">C++</span>
-              <span class="text-gray-500">Intermediate</span>
-            </div>
-            <div class="h-1.5 rounded-full bg-white/10 overflow-hidden">
-              <div class="h-full w-[65%] bg-indigo-500/70 rounded-full"></div>
-            </div>
-          </div>
-
-          <!-- Embedded -->
-          <div>
-            <div class="flex justify-between text-sm mb-1">
-              <span class="text-gray-300">Embedded Systems</span>
-              <span class="text-gray-500">Advanced</span>
-            </div>
-            <div class="h-1.5 rounded-full bg-white/10 overflow-hidden">
-              <div class="h-full w-[75%] bg-indigo-500/70 rounded-full"></div>
-            </div>
-          </div>
+          @for (skill of projects.skills().slice(0, 5); track skill) {
+            <app-skill-entry [skillLevel]="skill.level" [skillName]="skill.name"/>
+          }
 
         </div>
 
@@ -137,36 +98,35 @@
 
 
       <!-- PROJECTS -->
-      <a
-        href="#projects"
+      <div
         class="group rounded-2xl p-8 bg-white/5 border border-white/10
-               hover:border-indigo-500/40 transition"
+               hover:border-indigo-500/40 transition flex flex-col"
       >
         <h4 class="text-xl font-semibold text-white mb-4">
           Projects
         </h4>
 
-        <p class="text-gray-400 leading-relaxed">
+        <p class="text-gray-400 leading-relaxed grow">
           Selected personal and professional projects ranging from embedded
           systems to scalable web applications.
         </p>
 
-        <span class="inline-block mt-6 text-indigo-400 group-hover:translate-x-1 transition">
+        <span class="inline-block text-indigo-400 group-hover:translate-x-1 transition">
           View projects →
         </span>
-      </a>
+      </div>
 
       <!-- FOCUS -->
       <a
         href="#focus"
         class="group rounded-2xl p-8 bg-white/5 border border-white/10
-               hover:border-indigo-500/40 transition"
+               hover:border-indigo-500/40 transition flex flex-col"
       >
         <h4 class="text-xl font-semibold text-white mb-4">
           Focus
         </h4>
 
-        <p class="text-gray-400 leading-relaxed">
+        <p class="text-gray-400 leading-relaxed grow">
           Clean architecture, developer experience, and long-term maintainable
           software systems.
         </p>

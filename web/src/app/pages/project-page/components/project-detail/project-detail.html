@@ -1,0 +1,128 @@
+<!-- PROJECT DETAIL PAGE -->
+
+<!-- BACK NAV -->
+<div class="max-w-7xl mx-auto px-6 pt-10">
+  <a
+    routerLink="/projects"
+    class="text-sm text-gray-400 hover:text-white transition inline-flex items-center gap-2"
+  >
+    ← Back to Projects
+  </a>
+</div>
+
+<!-- TITLE -->
+<section class="max-w-7xl mx-auto px-6 mt-10">
+  <h1 class="text-4xl font-bold text-white mb-3">
+    Studio Database – IFEN
+  </h1>
+
+  <p class="text-gray-400 max-w-2xl">
+    Management software for IFEN’s audiovisual productions
+  </p>
+</section>
+
+<!-- HERO IMAGE -->
+<section class="max-w-7xl mx-auto px-6 mt-12">
+  <div class="rounded-3xl overflow-hidden bg-white/5 border border-white/10">
+    <img
+      src="/images/projects/studio-database/hero.png"
+      alt="Project preview"
+      class="w-full object-cover"
+    />
+  </div>
+</section>
+
+<!-- MAIN CONTENT -->
+<section class="max-w-7xl mx-auto px-6 mt-20">
+  <div class="grid grid-cols-1 lg:grid-cols-[320px_1fr] gap-16 items-start">
+
+    <!-- KEY FACTS -->
+    <aside
+      class="sticky top-24 rounded-2xl bg-white/5 border border-white/10 p-6 space-y-6"
+    >
+      <h3 class="text-sm font-semibold text-white flex items-center gap-2">
+        ℹ️ Key Facts
+      </h3>
+
+      <div class="space-y-4 text-sm">
+        <div>
+          <p class="text-gray-500">Company</p>
+          <p class="text-white">IFEN</p>
+        </div>
+
+        <div>
+          <p class="text-gray-500">Year</p>
+          <p class="text-white">2022</p>
+        </div>
+
+        <div>
+          <p class="text-gray-500">Role</p>
+          <p class="text-white">Full Stack Developer</p>
+        </div>
+
+        <div>
+          <p class="text-gray-500">Context</p>
+          <p class="text-white">Internship Project</p>
+        </div>
+      </div>
+
+      <div>
+        <p class="text-gray-500 mb-2 text-sm">Tech Stack</p>
+        <div class="flex flex-wrap gap-2">
+          <span class="px-3 py-1 text-xs rounded-full bg-white/10">PHP</span>
+          <span class="px-3 py-1 text-xs rounded-full bg-white/10">MySQL</span>
+          <span class="px-3 py-1 text-xs rounded-full bg-white/10">JavaScript</span>
+          <span class="px-3 py-1 text-xs rounded-full bg-white/10">CSS</span>
+        </div>
+      </div>
+    </aside>
+
+    <!-- MARKDOWN CONTENT -->
+    <article class="flex justify-center">
+      <div class="w-full max-w-3xl">
+        <markdown
+          [src]="'/res/content/test.md'"
+          class="prose prose-invert
+                 prose-headings:text-white
+                 prose-p:text-gray-300
+                 prose-strong:text-white
+                 prose-a:text-indigo-400
+                 max-w-none"
+        >
+        </markdown>
+      </div>
+    </article>
+
+  </div>
+</section>
+
+<!-- INSIGHTS -->
+<section class="max-w-7xl mx-auto px-6 mt-28 mb-32">
+
+  <h2 class="text-2xl font-semibold text-white mb-8 flex items-center gap-3">
+    📸 Insights
+  </h2>
+
+  <p class="text-gray-400 mb-10">
+    Screenshots from the web interface (without any data).
+  </p>
+
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+    <img
+      src="/images/projects/studio-database/1.png"
+      class="rounded-xl bg-white/5"
+      alt=""
+    />
+    <img
+      src="/images/projects/studio-database/2.png"
+      class="rounded-xl bg-white/5"
+      alt=""
+    />
+    <img
+      src="/images/projects/studio-database/3.png"
+      class="rounded-xl bg-white/5"
+      alt=""
+    />
+  </div>
+
+</section>

@@ -137,6 +137,12 @@ body {
   -webkit-text-fill-color: transparent;
 }
 
+
+.clickable {
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
 /* Scrollbar */
 ::-webkit-scrollbar { width: 6px; }
 ::-webkit-scrollbar-track { background: transparent; }

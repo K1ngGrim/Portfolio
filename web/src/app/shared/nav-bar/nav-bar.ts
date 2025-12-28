@@ -23,7 +23,7 @@ export class NavBar {
     },
     {
       title: 'About Me',
-      route: '/me'
+      route: '/about'
     },
     {
       title: 'Contact',
