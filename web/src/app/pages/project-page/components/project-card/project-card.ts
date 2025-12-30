@@ -18,6 +18,6 @@ export class ProjectCard {
   private readonly router = inject(Router);
 
   protected async openProjectDialog(p: Project) {
-    await this.router.navigate(['/projects', p.id]);
+    //await this.router.navigate(['/projects', p.id]);
   }
 }
