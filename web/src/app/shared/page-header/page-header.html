@@ -1,0 +1,13 @@
+<div class="border-b border-[#2C2C2C] pb-6">
+  <h2
+    class="font-mono text-3xl md:text-4xl font-bold tracking-tight mb-2"
+    [ngClass]="colors.comment"
+  >
+    {{ title() }}
+  </h2>
+
+  <p class="flex items-center gap-2 text-sm" [ngClass]="colors.textMuted">
+    <span [ngClass]="colors.primary">*</span>
+    {{ subtitle() }}
+  </p>
+</div>

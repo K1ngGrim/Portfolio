@@ -51,6 +51,20 @@ body {
   margin: 0;
 }
 
+/**
+const colors = {
+    bg: 'bg-[#121212]',      // Main background
+    surface: 'bg-[#1E1E1E]', // Card background
+    primary: 'text-[#BB86FC]', // Purple - Primary
+    accent: 'text-[#03DAC6]',  // Teal - Secondary
+    warn: 'text-[#CF6679]',    // Red - Error/Warn
+    textMain: 'text-[#E1E1E1]', // High emphasis
+    textMuted: 'text-[#A0A0A0]', // Medium emphasis
+    border: 'border-[#2C2C2C]',
+    comment: 'text-[#607D8B]'   // Syntax highlighting comment color
+  };
+ */
+
 @theme {
   --font-sans: Inter, sans-serif;
   --font-mono: "JetBrains Mono", monospace;

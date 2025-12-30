@@ -1,0 +1,21 @@
+<button
+  (click)="onClick()"
+  class="relative px-4 py-2 text-sm font-medium transition-all duration-300 hover:opacity-80"
+  [class.hover:text-[#BB86FC]]="true"
+  [routerLinkActiveOptions]="{ exact: true }"
+  [routerLink]="route()"
+  [routerLinkActive]="colors.primary"
+  [ngClass]="colors.textMuted"
+>
+  <span class="font-mono text-xs opacity-50 mr-2">
+    {{ isHome() ? './' : '/' }}
+  </span>
+
+  {{ label() }}
+
+  <span
+    [routerLinkActiveOptions]="{ exact: true }"
+    [routerLinkActive]="'absolute bottom-0 left-0 w-full h-[2px] bg-[#BB86FC] opacity-50'"
+    class="opacity-0">
+  </span>
+</button>

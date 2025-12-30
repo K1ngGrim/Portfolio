@@ -1,21 +1,49 @@
-<div
-  class="min-h-screen font-sans relative overflow-hidden
-         selection:bg-indigo-500/30 selection:text-indigo-100"
->
-  <!-- Noise + Blobs bleiben absolut -->
-  <div class="noise-bg absolute inset-0 pointer-events-none"></div>
+<div class="min-h-screen font-sans selection:bg-[#BB86FC] selection:text-black flex flex-col" [ngClass]="colors.bg">
 
-  <div class="absolute top-1/4 -left-20 w-96 h-96 bg-indigo-600/20 rounded-full blur-[100px] animate-blob-down"></div>
-  <div class="absolute bottom-1/4 -right-20 w-96 h-96 bg-purple-600/20 rounded-full blur-[100px] animate-blob-up"
-       style="animation-delay: 2s;"></div>
+  <nav class="fixed top-0 w-full z-50 transition-all duration-300"
+       [ngClass]="scrolled ? 'bg-[#121212]/95 backdrop-blur-md border-b border-[#2C2C2C]' : 'bg-transparent'">
 
-  <!-- ✅ NAVBAR CONTAINER -->
-  <header class="relative z-50 flex justify-center pt-8">
-    <app-nav-bar></app-nav-bar>
-  </header>
+    <div class="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
+      <div
+        class="font-mono text-xl font-bold tracking-tighter cursor-pointer hover:opacity-80 transition-opacity"
+        [ngClass]="colors.primary"
+      >
+        &lt;FlorianDev /&gt;
+      </div>
 
-  <!-- ✅ CONTENT -->
-  <main class="relative z-10 pt-12">
+      <div class="hidden md:flex items-center space-x-1">
+        @for (item of navService.nav(); track item) {
+          <app-nav-link [route]="item.route" [label]="item.title" [isHome]="item.route == '/'"></app-nav-link>
+        }
+      </div>
+
+      <button
+        (click)="openContact()"
+        class="border border-[#BB86FC] hover:bg-[#BB86FC] hover:text-black px-4 py-1.5 rounded text-sm font-medium transition-all duration-300 flex items-center gap-2"
+        [ngClass]="colors.primary"
+      >
+        <mat-icon svgIcon="email"></mat-icon>
+        Contact
+      </button>
+    </div>
+  </nav>
+
+  <main class="flex-grow pt-10 px-6 max-w-5xl mx-auto w-full">
     <router-outlet></router-outlet>
   </main>
+
+  <footer class="py-8 text-center mt-auto border-t border-[#2C2C2C] bg-[#121212]">
+    <div class="flex justify-center space-x-6 mb-4">
+      @for (link of links; track link) {
+        <app-social-link [href]="link.url">
+          <mat-icon style="width: 24px; height: 24px;" [svgIcon]="link.icon"></mat-icon>
+        </app-social-link>
+      }
+    </div>
+
+    <p class="font-mono text-xs" [ngClass]="colors.textMuted">
+      Built by Florian Kaiser
+    </p>
+  </footer>
+
 </div>

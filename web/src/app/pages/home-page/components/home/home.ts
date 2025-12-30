@@ -1,8 +1,10 @@
 import {Component, inject} from '@angular/core';
 import {MatIcon} from '@angular/material/icon';
-import {RouterLink} from '@angular/router';
+import {Router, RouterLink} from '@angular/router';
 import {ProjectData} from '../../../../data/services/project-data';
 import {SkillEntry} from '../skill-entry/skill-entry';
+import {colors} from '../../../../app';
+import {NgClass} from '@angular/common';
 
 interface Project {
   title: string;
@@ -17,33 +19,20 @@ interface Project {
   imports: [
     MatIcon,
     RouterLink,
-    SkillEntry
+    SkillEntry,
+    NgClass
   ],
   templateUrl: './home.html',
   styleUrl: './home.scss',
 })
 export class Home {
 
-  links: { name: string; icon: string; url: string }[] = [
-    {
-      name: 'GitHub',
-      icon: 'github',
-      url: 'https://github.com/k1ngGrim'
-    },
-    {
-      name: 'LinkedIn',
-      icon: 'linkedin',
-      url: 'https://www.linkedin.com/in/flor1an-ka1ser/'
-    }
-  ]
-
-  protected readonly projects = inject(ProjectData);
+  private readonly router = inject(Router);
 
 
-  navItems: string[] = ['Home', 'Skills', 'Projekte', 'Kontakt'];
+  async navigateTo(view: string) {
+    await this.router.navigate([view]);
+  }
 
-  frontendTech: string[] = ['React', 'TypeScript', 'Next.js', 'Tailwind', 'Three.js'];
-  backendTech: string[] = ['Go', 'Node.js', 'Docker', 'Kubernetes', 'PostgreSQL'];
-  dataTech: string[] = ['Python', 'PyTorch', 'Pandas', 'RAG', 'LLMs'];
-
+  protected readonly colors = colors;
 }

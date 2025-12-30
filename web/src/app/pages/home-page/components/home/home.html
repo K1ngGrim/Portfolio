@@ -1,141 +1,37 @@
-<section class="relative h-screen max-h-[450px] flex flex-col overflow-hidden">
-
-  <!-- HERO CONTENT -->
-  <div class="flex-1 flex items-center">
-    <div class="w-full max-w-7xl mx-auto px-8">
-
-      <div class="grid grid-cols-1 md:grid-cols-[1fr_auto_1fr] gap-x-24 items-center">
-
-        <div class="space-y-8 text-center md:text-left">
-          <h1 class="text-5xl md:text-8xl font-bold tracking-tight text-white leading-[1.05] mb-2">
-            Florian
-            <span class="text-gradient block">Kaiser</span>
-          </h1>
-
-          <div class="flex justify-center md:justify-start gap-3 text-gray-400">
-            @for (entry of links; track entry.name) {
-              <a [href]="entry.url" target="_blank" rel="noopener noreferrer">
-                <mat-icon style="width: 32px; height: 32px;" [svgIcon]="entry.icon"></mat-icon>
-              </a>
-            }
-          </div>
-        </div>
-
-        <div class="flex justify-center">
-          <div
-            class="glitch-container"
-            style="max-width: 340px; max-height: 340px; aspect-ratio: 1; border-radius: 2rem;"
-          >
-            <div class="glitch-layers">
-              <img src="res/images/oben.png" class="layer red" alt="">
-              <img src="res/images/unten.png" class="layer cyan" alt="">
-            </div>
-
-            <img src="res/images/unten.png" class="pixelated" alt="">
-            <img src="res/images/oben.png" class="original" alt="">
-          </div>
-        </div>
-
-        <!-- RIGHT -->
-        <div class="space-y-6 text-center md:text-left">
-          <span class="uppercase tracking-[0.3em] text-xs text-indigo-400">
-            Introducing
-          </span>
-
-          <h3 class="text-3xl font-semibold text-white">
-            Software Developer
-          </h3>
-
-          <p class="text-gray-400 leading-relaxed max-w-md mx-auto md:mx-0">
-            I build scalable software systems with a strong focus on clean
-            architecture, performance and modern user experiences.
-          </p>
-
-          <span
-            routerLink="/about"
-            class="clickable inline-flex items-center gap-3 px-7 py-3 rounded-full
-                   bg-indigo-600 hover:bg-indigo-500 text-white font-medium
-                   transition shadow-xl shadow-indigo-600/30"
-          >
-            My Story
-            <mat-icon>arrow_forward</mat-icon>
-          </span>
-        </div>
-
-      </div>
+<div class="min-h-[70vh] flex flex-col justify-center items-start space-y-8 animate-fade-in">
+  <div class="space-y-4">
+    <div class="font-mono text-sm tracking-wide ml-1 flex items-center gap-2" [ngClass]="colors.accent">
+      <span [ngClass]="colors.comment">// Initialize profile</span>
     </div>
+
+    <h1 class="text-5xl md:text-8xl font-bold tracking-tight" [ngClass]="colors.textMain">
+      Florian Kaiser.
+    </h1>
+
+    <h2 class="text-4xl md:text-6xl font-bold tracking-tight opacity-90" [ngClass]="colors.textMuted">
+      Building digital <br/> ecosystems.
+    </h2>
   </div>
-</section>
 
-<section class="relative">
-  <div class="max-w-7xl mx-auto px-8">
+  <p class="max-w-lg text-lg leading-relaxed border-l-2 border-[#BB86FC] pl-6 py-2" [ngClass]="colors.textMuted">
+    Software Engineer & CS Master's Student specializing in distributed systems. I turn coffee into clean, scalable code.
+  </p>
 
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
+  <div class="flex flex-wrap gap-4 pt-4">
+    <button
+      (click)="navigateTo('projects')"
+      class="px-8 py-4 bg-[#BB86FC] text-black font-bold rounded-sm hover:bg-[#a370e0] transition-colors flex items-center gap-3"
+    >
+      View Projects
+      <mat-icon style="width: 24px; height: 24px;" svgIcon="arrow-right"></mat-icon>
+    </button>
 
-      <!-- SKILLS -->
-      <!-- SKILLS -->
-      <a
-        href="#skills"
-        class="group rounded-2xl p-8 bg-white/5 border border-white/10
-         hover:border-indigo-500/40 transition"
-      >
-        <h4 class="text-xl font-semibold text-white mb-6">
-          Skills
-        </h4>
-
-        <div class="space-y-4">
-
-          @for (skill of projects.skills().slice(0, 5); track skill) {
-            <app-skill-entry [skillLevel]="skill.level" [skillName]="skill.name"/>
-          }
-
-        </div>
-
-        <span class="inline-block mt-6 text-indigo-400 group-hover:translate-x-1 transition">
-          View skills →
-        </span>
-      </a>
-
-
-      <!-- PROJECTS -->
-      <div
-        class="group rounded-2xl p-8 bg-white/5 border border-white/10
-               hover:border-indigo-500/40 transition flex flex-col"
-      >
-        <h4 class="text-xl font-semibold text-white mb-4">
-          Projects
-        </h4>
-
-        <p class="text-gray-400 leading-relaxed grow">
-          Selected personal and professional projects ranging from embedded
-          systems to scalable web applications.
-        </p>
-
-        <span class="inline-block text-indigo-400 group-hover:translate-x-1 transition">
-          View projects →
-        </span>
-      </div>
-
-      <!-- FOCUS -->
-      <a
-        href="#focus"
-        class="group rounded-2xl p-8 bg-white/5 border border-white/10
-               hover:border-indigo-500/40 transition flex flex-col"
-      >
-        <h4 class="text-xl font-semibold text-white mb-4">
-          Focus
-        </h4>
-
-        <p class="text-gray-400 leading-relaxed grow">
-          Clean architecture, developer experience, and long-term maintainable
-          software systems.
-        </p>
-
-        <span class="inline-block mt-6 text-indigo-400 group-hover:translate-x-1 transition">
-          Learn more →
-        </span>
-      </a>
-
-    </div>
+    <button
+      (click)="navigateTo('about')"
+      class="px-8 py-4 border rounded-sm transition-colors font-mono text-sm"
+      [ngClass]="[colors.border, colors.textMain]"
+    >
+      $ whoami
+    </button>
   </div>
-</section>
+</div>
