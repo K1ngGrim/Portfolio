@@ -1,21 +1,26 @@
-import {Component, inject, signal} from '@angular/core';
-import {RouterOutlet} from '@angular/router';
+import {Component, HostListener, inject, signal} from '@angular/core';
+import {RouterLink, RouterOutlet} from '@angular/router';
 import {MatIcon, MatIconRegistry} from '@angular/material/icon';
 import {DomSanitizer} from '@angular/platform-browser';
 import {NgClass} from '@angular/common';
 import {NavLink} from './shared/nav-link/nav-link';
-import {NavigationService} from './shared/services/navigation-service';
+import {NavigationService} from './services/navigation-service';
 import {SocialLink} from './shared/social-link/social-link';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, NgClass, NavLink, SocialLink, MatIcon],
+  imports: [RouterOutlet, NgClass, NavLink, SocialLink, MatIcon, RouterLink],
   templateUrl: './app.html',
   styleUrl: './app.scss'
 })
 export class App {
 
   scrolled = false;
+
+  @HostListener('window:scroll', [])
+  onWindowScroll() {
+    this.scrolled = window.scrollY > 20;
+  }
 
   protected readonly title = signal('web');
 
@@ -37,7 +42,7 @@ export class App {
   protected readonly links = links;
 }
 
-export const links: { name: string; icon: string; url: string }[] = [
+export const links: { name: string; icon: string; url: string}[] = [
   {
     name: 'GitHub',
     icon: 'github',

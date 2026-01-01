@@ -1,153 +1,87 @@
-<!-- ABOUT HERO -->
-<section class="max-w-6xl mx-auto py-20 px-6 grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+<div class="animate-fade-in pb-12">
+  <app-page-header
+    title="// README.md"
+    subtitle="Introduction and Setup">
+  </app-page-header>
 
-  <!-- IMAGE -->
-  <div class="flex justify-center">
-    <img
-      src="res/images/unten.png"
-      alt="Portrait"
-      class="w-72 h-72 object-cover rounded-2xl bg-white/10"
-    />
-  </div>
+  <div class="grid md:grid-cols-12 gap-12 mt-12">
 
-  <!-- TEXT -->
-  <div class="space-y-6">
-    <h1 class="text-4xl font-bold text-white">About Me</h1>
-
-    <p class="text-gray-400 leading-relaxed">
-      I am a software developer with a strong interest in building reliable,
-      well-structured systems — from modern web applications to embedded and
-      low-level software.
-    </p>
-
-    <p class="text-gray-400 leading-relaxed">
-      Currently, I am pursuing my Master’s degree in Computer Science while
-      working on both practical software projects and academic research.
-      I enjoy bridging theory and practice, with a focus on clean architecture,
-      long-term maintainability, and thoughtful engineering decisions.
-    </p>
-  </div>
-
-</section>
-
-<!-- TIMELINE -->
-<section class="max-w-6xl mx-auto py-24 px-6">
-
-  <h2 class="text-3xl font-semibold text-white mb-12 text-center">
-    My Journey
-  </h2>
-
-  <div class="relative flex flex-col md:flex-row gap-12 justify-between">
-
-    <!-- ITEM -->
-    <div class="text-center md:text-left max-w-xs">
-      <div class="mb-4 text-indigo-400 text-2xl">🎓</div>
-      <h3 class="text-lg font-semibold text-white mb-2">
-        Bachelor’s Degree
-      </h3>
-      <p class="text-gray-400 text-sm">
-        Built a strong foundation in software engineering, algorithms, and
-        system-level programming.
-      </p>
-    </div>
-
-    <div class="text-center md:text-left max-w-xs">
-      <div class="mb-4 text-indigo-400 text-2xl">🛠</div>
-      <h3 class="text-lg font-semibold text-white mb-2">
-        Software Projects
-      </h3>
-      <p class="text-gray-400 text-sm">
-        Developed practical projects ranging from web applications to embedded
-        systems and tooling.
-      </p>
-    </div>
-
-    <div class="text-center md:text-left max-w-xs">
-      <div class="mb-4 text-indigo-400 text-2xl">📄</div>
-      <h3 class="text-lg font-semibold text-white mb-2">
-        Academic Research
-      </h3>
-      <p class="text-gray-400 text-sm">
-        Research work including a paper on generic embedded RPC middleware.
-      </p>
-    </div>
-
-    <div class="text-center md:text-left max-w-xs">
-      <div class="mb-4 text-indigo-400 text-2xl">🎓</div>
-      <h3 class="text-lg font-semibold text-white mb-2">
-        Master’s Degree (ongoing)
-      </h3>
-      <p class="text-gray-400 text-sm">
-        Advanced studies in software architecture, distributed systems, and
-        research-oriented development.
-      </p>
-    </div>
-
-  </div>
-</section>
-
-<!-- INTERESTS -->
-<section class="max-w-6xl mx-auto py-24 px-6">
-
-  <h2 class="text-3xl font-semibold text-white mb-12 text-center">
-    Beyond Code
-  </h2>
-
-  <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
-
-    <div class="bg-white/5 rounded-2xl overflow-hidden">
-      <img src="/images/about/volleyball.jpg" class="h-48 w-full object-cover" />
-      <div class="p-6">
-        <h3 class="text-lg font-semibold text-white mb-2">Volleyball</h3>
-        <p class="text-gray-400 text-sm">
-          Playing volleyball in a local club helps me stay competitive,
-          disciplined, and team-oriented.
+    <div class="md:col-span-7 space-y-8">
+      <div class="prose prose-invert text-lg">
+        <p class="leading-relaxed" [ngClass]="colors.textMuted">
+          <span [ngClass]="colors.primary">const name = "Florian";</span><br/><br/>
+          My journey into tech began around 2016/17 during my
+          <span [ngClass]="colors.accent">apprenticeship as an electronics technician</span>.
+          It all started with a simple calculator app, which quickly evolved into developing custom
+          <span [ngClass]="colors.primary">Minecraft plugins</span>. My first real deep dive into logic and backend structures.
         </p>
+        <p class="leading-relaxed mt-4" [ngClass]="colors.textMuted">
+          Fast-forward to today, and I've had the opportunity to apply my skills in diverse environments. I gained valuable experience working at a
+          <span [ngClass]="colors.accent">boutique LegalTech firm</span> and am currently employed as an
+          <span [ngClass]="colors.accent">Academic Staff Member</span> at the
+          <span [ngClass]="colors.primary">
+            <a target="_blank" rel="noopener noreferrer" href="https://www.h-ka.de/">
+              Karlsruhe University of Applied Sciences
+              <mat-icon svgIcon="open-in-new" style="transform: scale(0.75)"></mat-icon>
+            </a>
+          </span>.
+        </p>
+        <p class="leading-relaxed mt-4" [ngClass]="colors.textMuted">
+          I am currently finishing my Master's in Computer Science at the
+          <span [ngClass]="colors.primary">
+            <a target="_blank" rel="noopener noreferrer" href="https://www.h-ka.de/">
+              Karlsruhe University of Applied Sciences
+              <mat-icon svgIcon="open-in-new" style="transform: scale(0.75)"></mat-icon>
+            </a>
+          </span>. My core interests lie at the intersection of
+          <span [ngClass]="colors.accent">Web & App Development</span> and
+          <span [ngClass]="colors.accent">Embedded Systems</span>, combining high-level software architecture with hardware-level precision.
+        </p>
+      </div>
+
+      <div class="mt-8">
+        <h3 class="font-mono text-lg mb-4 flex items-center gap-2" [ngClass]="colors.textMain">
+          <mat-icon svgIcon="console-line" class="text-custom-primary"></mat-icon>
+          Current Stack
+        </h3>
+        <div class="grid grid-cols-2 gap-4">
+          <div *ngFor="let tech of techStack"
+               class="flex items-center gap-3 p-3 rounded border border-transparent transition-colors"
+               [ngClass]="[colors.surface, 'hover:' + colors.border]">
+            <span [ngClass]="colors.accent">▹</span>
+            <span class="text-sm" [ngClass]="colors.textMain">{{ tech }}</span>
+          </div>
+        </div>
       </div>
     </div>
 
-    <div class="bg-white/5 rounded-2xl overflow-hidden">
-      <img src="/images/about/fitness.jpg" class="h-48 w-full object-cover" />
-      <div class="p-6">
-        <h3 class="text-lg font-semibold text-white mb-2">Fitness</h3>
-        <p class="text-gray-400 text-sm">
-          Regular strength training is part of my routine, supporting both
-          physical and mental performance.
-        </p>
+    <div class="md:col-span-5 space-y-8">
+      <div class="relative group">
+        <div class="absolute inset-0 border-2 border-[#BB86FC] rounded translate-x-3 translate-y-3 transition-transform group-hover:translate-x-2 group-hover:translate-y-2"></div>
+        <div class="relative bg-[#252525] rounded h-80 w-full flex items-center justify-center overflow-hidden grayscale hover:grayscale-0 transition-all duration-500">
+          <img src="/res/images/portrait.webp" height="1440" width="1440"/>
+          <div class="absolute inset-0 bg-[#BB86FC] opacity-10 group-hover:opacity-0 transition-opacity"></div>
+        </div>
       </div>
-    </div>
 
-    <div class="bg-white/5 rounded-2xl overflow-hidden">
-      <img src="/images/about/streaming.jpg" class="h-48 w-full object-cover" />
-      <div class="p-6">
-        <h3 class="text-lg font-semibold text-white mb-2">Streaming</h3>
-        <p class="text-gray-400 text-sm">
-          Streaming combines technology, communication, and community —
-          a creative outlet beyond coding.
-        </p>
+      <div class="p-6 rounded border" [ngClass]="[colors.surface, colors.border]">
+        <h4 class="font-bold mb-4" [ngClass]="colors.textMain">Quick Stats</h4>
+        <ul class="space-y-3 font-mono text-sm">
+          <li class="flex justify-between">
+            <span [ngClass]="colors.textMuted">Degree</span>
+            <span [ngClass]="colors.primary">B.Sc. Computer Science</span>
+          </li>
+          <li class="flex justify-between">
+            <span [ngClass]="colors.textMuted">Role</span>
+            <span [ngClass]="colors.accent">Academic Staff</span>
+          </li>
+          <li class="flex justify-between">
+            <span [ngClass]="colors.textMuted">Location</span>
+            <span class="text-white">Karlsruhe, DE</span>
+          </li>
+        </ul>
       </div>
     </div>
 
   </div>
-</section>
-
-<!-- PHOTOGRAPHY -->
-<section class="max-w-6xl mx-auto py-24 px-6">
-
-  <h2 class="text-3xl font-semibold text-white mb-8 text-center">
-    Photography
-  </h2>
-
-  <p class="text-gray-400 text-center max-w-2xl mx-auto mb-12">
-    Photography allows me to slow down and focus on details, composition, and
-    perspective — a creative contrast to software development.
-  </p>
-
-  <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-    <img ngSrc="res/images/photo/1.png" class="rounded-xl object-cover h-48 w-full" />
-    <img ngSrc="res/images/photo/2.png" class="rounded-xl object-cover h-48 w-full" />
-    <img ngSrc="res/images/photo/3.png" class="rounded-xl object-cover h-48 w-full" />
-    <img ngSrc="res/images/photo/4.png" class="rounded-xl object-cover h-48 w-full" />
-  </div>
-
-</section>
+</div>

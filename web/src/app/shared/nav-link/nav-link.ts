@@ -1,12 +1,10 @@
 import {Component, inject, input} from '@angular/core';
 import {Router, RouterLink, RouterLinkActive} from '@angular/router';
-import {NgClass} from '@angular/common';
 import {colors} from '../../app';
 
 @Component({
   selector: 'app-nav-link',
   imports: [
-    NgClass,
     RouterLinkActive,
     RouterLink
   ],

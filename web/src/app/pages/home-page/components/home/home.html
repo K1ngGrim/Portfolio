@@ -9,18 +9,19 @@
     </h1>
 
     <h2 class="text-4xl md:text-6xl font-bold tracking-tight opacity-90" [ngClass]="colors.textMuted">
-      Building digital <br/> ecosystems.
+      Bridging hardware <br/> & software.
     </h2>
   </div>
 
   <p class="max-w-lg text-lg leading-relaxed border-l-2 border-[#BB86FC] pl-6 py-2" [ngClass]="colors.textMuted">
-    Software Engineer & CS Master's Student specializing in distributed systems. I turn coffee into clean, scalable code.
+    Computer Science student and Academic Staff Member. <br>
+    I build robust solutions from the hardware layer up to the cloud.
   </p>
 
   <div class="flex flex-wrap gap-4 pt-4">
     <button
       (click)="navigateTo('projects')"
-      class="px-8 py-4 bg-[#BB86FC] text-black font-bold rounded-sm hover:bg-[#a370e0] transition-colors flex items-center gap-3"
+      class="px-8 py-4 bg-[#BB86FC] text-black font-bold rounded-sm hover:bg-[#a370e0] transition-colors flex items-center gap-3 clickable"
     >
       View Projects
       <mat-icon style="width: 24px; height: 24px;" svgIcon="arrow-right"></mat-icon>
@@ -28,7 +29,7 @@
 
     <button
       (click)="navigateTo('about')"
-      class="px-8 py-4 border rounded-sm transition-colors font-mono text-sm"
+      class="px-8 py-4 border rounded-sm transition-colors font-mono text-sm clickable hover:bg-[#1E1E1E]"
       [ngClass]="[colors.border, colors.textMain]"
     >
       $ whoami

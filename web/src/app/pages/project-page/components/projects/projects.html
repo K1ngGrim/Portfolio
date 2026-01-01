@@ -1,35 +1,24 @@
-<section class="max-w-6xl mx-auto py-20 px-4">
+<div class="animate-fade-in pb-12">
+  <app-page-header
+    title="// Archive"
+    subtitle="Selected works 2023 - Present">
+  </app-page-header>
 
-  <h2 class="text-4xl font-bold text-white tracking-tight mb-10">
-    Projects & Papers
-  </h2>
-
-  @for (category of projects.categories(); track category) {
-
-    @if (projects.getProjects(category.type); as projectList) {
-      @if (projectList.length > 0) {
-        <h3 class="text-2xl font-bold text-secondary-color tracking-tight mb-4 mt-[60px]" >
-          {{ category.label }}
-        </h3>
-
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
-
-          @for (project of projectList; track project.id) {
-            <app-project-card [project]="project"/>
-          }
-        </div>
-      }
-
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-12">
+    @for (project of projects.projects; track project.id) {
+      <app-project-card
+        [id]="project.id"
+        [title]="project.title"
+        [desc]="project.shortDesc"
+        [tech]="project.tags"
+      >
+        @if (project.category == ProjectCategory.ACADEMIC) {
+          <mat-icon project-icon svgIcon="school" class="text-custom-muted"></mat-icon>
+        } @else {
+          <mat-icon project-icon svgIcon="console-line" class="text-custom-warn"></mat-icon>
+        }
+      </app-project-card>
     }
 
-
-
-
-  }
-
-
-
-
-
-
-</section>
+  </div>
+</div>

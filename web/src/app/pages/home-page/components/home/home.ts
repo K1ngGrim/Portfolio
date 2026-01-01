@@ -1,8 +1,6 @@
 import {Component, inject} from '@angular/core';
 import {MatIcon} from '@angular/material/icon';
-import {Router, RouterLink} from '@angular/router';
-import {ProjectData} from '../../../../data/services/project-data';
-import {SkillEntry} from '../skill-entry/skill-entry';
+import {Router} from '@angular/router';
 import {colors} from '../../../../app';
 import {NgClass} from '@angular/common';
 
@@ -18,8 +16,6 @@ interface Project {
   selector: 'app-home-page',
   imports: [
     MatIcon,
-    RouterLink,
-    SkillEntry,
     NgClass
   ],
   templateUrl: './home.html',

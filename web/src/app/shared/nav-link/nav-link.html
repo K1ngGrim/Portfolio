@@ -1,17 +1,17 @@
 <button
   (click)="onClick()"
-  class="relative px-4 py-2 text-sm font-medium transition-all duration-300 hover:opacity-80"
-  [class.hover:text-[#BB86FC]]="true"
+  class="relative px-4 py-2 clickable text-sm font-medium transition-all duration-300 hover:opacity-80 text-custom-muted hover:text-[#BB86FC]"
   [routerLinkActiveOptions]="{ exact: true }"
   [routerLink]="route()"
   [routerLinkActive]="colors.primary"
-  [ngClass]="colors.textMuted"
 >
-  <span class="font-mono text-xs opacity-50 mr-2">
+  <span class="font-mono text-base opacity-50 mr-1">
     {{ isHome() ? './' : '/' }}
   </span>
 
-  {{ label() }}
+  <span class="font-mono text-base">
+    {{ label() }}
+  </span>
 
   <span
     [routerLinkActiveOptions]="{ exact: true }"

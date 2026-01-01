@@ -7,8 +7,9 @@
       <div
         class="font-mono text-xl font-bold tracking-tighter cursor-pointer hover:opacity-80 transition-opacity"
         [ngClass]="colors.primary"
+        routerLink="''"
       >
-        &lt;FlorianDev /&gt;
+        &lt;flolukai /&gt;
       </div>
 
       <div class="hidden md:flex items-center space-x-1">
@@ -19,7 +20,7 @@
 
       <button
         (click)="openContact()"
-        class="border border-[#BB86FC] hover:bg-[#BB86FC] hover:text-black px-4 py-1.5 rounded text-sm font-medium transition-all duration-300 flex items-center gap-2"
+        class="border border-[#BB86FC] hover:bg-[#BB86FC] hover:text-black px-4 py-1.5 rounded text-sm font-medium transition-all duration-300 flex items-center gap-2 clickable"
         [ngClass]="colors.primary"
       >
         <mat-icon svgIcon="email"></mat-icon>
@@ -28,14 +29,14 @@
     </div>
   </nav>
 
-  <main class="flex-grow pt-10 px-6 max-w-5xl mx-auto w-full">
+  <main class="flex-grow pt-24 px-6 max-w-5xl mx-auto w-full">
     <router-outlet></router-outlet>
   </main>
 
   <footer class="py-8 text-center mt-auto border-t border-[#2C2C2C] bg-[#121212]">
     <div class="flex justify-center space-x-6 mb-4">
       @for (link of links; track link) {
-        <app-social-link [href]="link.url">
+        <app-social-link [href]="link.url" class="grow-hover">
           <mat-icon style="width: 24px; height: 24px;" [svgIcon]="link.icon"></mat-icon>
         </app-social-link>
       }

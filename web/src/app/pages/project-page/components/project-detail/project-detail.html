@@ -1,128 +1,120 @@
-<!-- PROJECT DETAIL PAGE -->
+@if (project(); as project) {
+  <div class="animate-fade-in pb-12">
 
-<!-- BACK NAV -->
-<div class="max-w-7xl mx-auto px-6 pt-10">
-  <a
-    routerLink="/projects"
-    class="text-sm text-gray-400 hover:text-white transition inline-flex items-center gap-2"
-  >
-    ← Back to Projects
-  </a>
-</div>
+    <div class="flex items-center gap-4 mb-8 text-sm font-mono">
+      <button
+        (click)="navigateTo('projects')"
+        class="flex items-center gap-1 transition-colors hover:opacity-80 clickable"
+        [ngClass]="[colors.textMuted, 'hover:' + colors.primary]"
+      >
+        <mat-icon svgIcon="chevron-left"></mat-icon> cd ..
+      </button>
+      <span class="text-custom-muted">|</span>
+      <span [ngClass]="colors.textMuted">Archive</span>
+      <span [ngClass]="colors.textMuted">/</span>
+      <span [ngClass]="colors.primary">{{ project.title }}</span>
+    </div>
 
-<!-- TITLE -->
-<section class="max-w-7xl mx-auto px-6 mt-10">
-  <h1 class="text-4xl font-bold text-white mb-3">
-    Studio Database – IFEN
-  </h1>
-
-  <p class="text-gray-400 max-w-2xl">
-    Management software for IFEN’s audiovisual productions
-  </p>
-</section>
-
-<!-- HERO IMAGE -->
-<section class="max-w-7xl mx-auto px-6 mt-12">
-  <div class="rounded-3xl overflow-hidden bg-white/5 border border-white/10">
-    <img
-      src="/images/projects/studio-database/hero.png"
-      alt="Project preview"
-      class="w-full object-cover"
-    />
-  </div>
-</section>
-
-<!-- MAIN CONTENT -->
-<section class="max-w-7xl mx-auto px-6 mt-20">
-  <div class="grid grid-cols-1 lg:grid-cols-[320px_1fr] gap-16 items-start">
-
-    <!-- KEY FACTS -->
-    <aside
-      class="sticky top-24 rounded-2xl bg-white/5 border border-white/10 p-6 space-y-6"
-    >
-      <h3 class="text-sm font-semibold text-white flex items-center gap-2">
-        ℹ️ Key Facts
-      </h3>
-
-      <div class="space-y-4 text-sm">
+    <div class="border-b border-[#2C2C2C] pb-8 mb-8">
+      <div class="flex items-start justify-between">
         <div>
-          <p class="text-gray-500">Company</p>
-          <p class="text-white">IFEN</p>
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-medium mb-4 bg-opacity-10 border border-[#2C2C2C]"
+               [ngClass]="[colors.surface, colors.accent]">
+            {{ project.type }}
+          </div>
+          <h1 class="text-4xl md:text-5xl font-bold mb-4" [ngClass]="colors.textMain">
+            {{ project.title }}
+          </h1>
+          <p class="text-xl max-w-2xl" [ngClass]="colors.textMuted">
+            {{ project.shortDesc }}
+          </p>
         </div>
-
-        <div>
-          <p class="text-gray-500">Year</p>
-          <p class="text-white">2022</p>
-        </div>
-
-        <div>
-          <p class="text-gray-500">Role</p>
-          <p class="text-white">Full Stack Developer</p>
-        </div>
-
-        <div>
-          <p class="text-gray-500">Context</p>
-          <p class="text-white">Internship Project</p>
+        <div class="hidden md:flex gap-4">
+          <a href="#" class="p-3 rounded-full border transition-colors hover:bg-[#BB86FC] hover:text-black"
+             [ngClass]="[colors.border, colors.textMain]">
+            <mat-icon svgIcon="github"></mat-icon>
+          </a>
+          <a href="#" class="p-3 rounded-full border transition-colors hover:bg-[#03DAC6] hover:text-black"
+             [ngClass]="[colors.border, colors.textMain]">
+            <mat-icon svgIcon="open-in-new"></mat-icon>
+          </a>
         </div>
       </div>
+    </div>
 
-      <div>
-        <p class="text-gray-500 mb-2 text-sm">Tech Stack</p>
-        <div class="flex flex-wrap gap-2">
-          <span class="px-3 py-1 text-xs rounded-full bg-white/10">PHP</span>
-          <span class="px-3 py-1 text-xs rounded-full bg-white/10">MySQL</span>
-          <span class="px-3 py-1 text-xs rounded-full bg-white/10">JavaScript</span>
-          <span class="px-3 py-1 text-xs rounded-full bg-white/10">CSS</span>
+    <div class="grid md:grid-cols-12 gap-12">
+      <div class="md:col-span-8 space-y-10">
+
+        @if (project.imgSrc != null) {
+          <div class="w-full h-64 md:h-96 rounded border flex items-center justify-center relative overflow-hidden group"
+               [ngClass]="[colors.surface, colors.border]">
+            <div class="absolute inset-0 bg-gradient-to-t from-[#121212] to-transparent opacity-60"></div>
+            <div class="text-center z-10">
+              <p class="font-mono text-sm opacity-50" [ngClass]="colors.textMuted">[Project Screenshot Placeholder]</p>
+            </div>
+          </div>
+        }
+
+        <section>
+          <h3 class="text-2xl font-bold mb-4 flex items-center gap-2" [ngClass]="colors.textMain">
+            <mat-icon svgIcon="information-outline" class="text-custom-primary"></mat-icon>
+            About the Project
+          </h3>
+          <p class="leading-relaxed text-lg" [ngClass]="colors.textMuted">
+            {{ project.longDesc }}
+          </p>
+        </section>
+
+        <section>
+          <h3 class="text-2xl font-bold mb-4 flex items-center gap-2" [ngClass]="colors.textMain">
+            <mat-icon svgIcon="lightning-bolt-outline" class="text-custom-accent"></mat-icon>
+            Key Features
+          </h3>
+          <div class="grid sm:grid-cols-2 gap-4">
+            @for (feature of project.features; track feature; let i = $index) {
+              <div class="p-4 rounded border border-[#2C2C2C] flex items-center gap-3" [ngClass]="colors.surface">
+                <div class="w-2 h-2 rounded-full" [ngClass]="i % 2 === 0 ? 'bg-[#BB86FC]' : 'bg-[#03DAC6]'"></div>
+                <span [ngClass]="colors.textMuted">{{ feature }}</span>
+              </div>
+            }
+          </div>
+        </section>
+      </div>
+
+      <div class="md:col-span-4 space-y-8">
+        <div class="p-6 rounded border" [ngClass]="[colors.surface, colors.border]">
+          <h3 class="font-bold mb-4 flex items-center gap-2" [ngClass]="colors.textMain">
+            <mat-icon svgIcon="layers-outline" class="display-block text-custom-primary"></mat-icon>
+            Tech Stack
+          </h3>
+          <div class="flex flex-wrap gap-2">
+            @for (t of project.tags; track t) {
+              <span class="px-3 py-1 rounded text-sm font-mono border border-[#2C2C2C]" [ngClass]="[colors.bg, colors.textMain]">
+                {{ t }}
+              </span>
+            }
+          </div>
+        </div>
+
+        <div class="p-6 rounded border" [ngClass]="[colors.surface, colors.border]">
+          <h3 class="font-bold mb-4" [ngClass]="colors.textMain">Project Info</h3>
+          <ul class="space-y-4 font-mono text-sm">
+            <li class="flex justify-between">
+              <span [ngClass]="colors.textMuted">Year</span>
+              <span [ngClass]="colors.textMain">2024</span>
+            </li>
+            <li class="flex justify-between">
+              <span [ngClass]="colors.textMuted">Role</span>
+              <span [ngClass]="colors.textMain">Lead Dev</span>
+            </li>
+            <li class="flex justify-between">
+              <span [ngClass]="colors.textMuted">Status</span>
+              <span [ngClass]="colors.accent">Completed</span>
+            </li>
+          </ul>
         </div>
       </div>
-    </aside>
-
-    <!-- MARKDOWN CONTENT -->
-    <article class="flex justify-center">
-      <div class="w-full max-w-3xl">
-        <markdown
-          [src]="'/res/content/test.md'"
-          class="prose prose-invert
-                 prose-headings:text-white
-                 prose-p:text-gray-300
-                 prose-strong:text-white
-                 prose-a:text-indigo-400
-                 max-w-none"
-        >
-        </markdown>
-      </div>
-    </article>
-
+    </div>
   </div>
-</section>
+}
 
-<!-- INSIGHTS -->
-<section class="max-w-7xl mx-auto px-6 mt-28 mb-32">
-
-  <h2 class="text-2xl font-semibold text-white mb-8 flex items-center gap-3">
-    📸 Insights
-  </h2>
-
-  <p class="text-gray-400 mb-10">
-    Screenshots from the web interface (without any data).
-  </p>
-
-  <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-    <img
-      src="/images/projects/studio-database/1.png"
-      class="rounded-xl bg-white/5"
-      alt=""
-    />
-    <img
-      src="/images/projects/studio-database/2.png"
-      class="rounded-xl bg-white/5"
-      alt=""
-    />
-    <img
-      src="/images/projects/studio-database/3.png"
-      class="rounded-xl bg-white/5"
-      alt=""
-    />
-  </div>
-
-</section>
