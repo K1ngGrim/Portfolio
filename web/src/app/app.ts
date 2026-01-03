@@ -35,7 +35,7 @@ export class App {
   }
 
   openContact() {
-    window.open('mailto:hello@example.com');
+    window.open('mailto:flolukai@gmail.com');
   }
 
   protected readonly colors = colors;
@@ -56,7 +56,7 @@ export const links: { name: string; icon: string; url: string}[] = [
   {
     name: 'Mail',
     icon: 'email',
-    url: 'mailto:hello@example.com'
+    url: 'mailto:flolukai@gmail.com'
   }
 ]
 
