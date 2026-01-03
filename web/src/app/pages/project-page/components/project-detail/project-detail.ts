@@ -1,6 +1,6 @@
 import {Component, inject, OnInit, signal} from '@angular/core';
 import {MarkdownComponent} from 'ngx-markdown';
-import {NgClass} from '@angular/common';
+import {KeyValuePipe, NgClass} from '@angular/common';
 import {colors} from '../../../../app';
 import {Project, ProjectData} from '../../../../data/services/project-data';
 import {ActivatedRoute, Router} from '@angular/router';
@@ -11,7 +11,8 @@ import {MatIcon} from '@angular/material/icon';
   selector: 'app-project-detail',
   imports: [
     NgClass,
-    MatIcon
+    MatIcon,
+    KeyValuePipe
   ],
   templateUrl: './project-detail.html',
   styleUrl: './project-detail.scss',

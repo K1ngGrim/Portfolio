@@ -30,14 +30,13 @@
           </p>
         </div>
         <div class="hidden md:flex gap-4">
-          <a href="#" class="p-3 rounded-full border transition-colors hover:bg-[#BB86FC] hover:text-black"
-             [ngClass]="[colors.border, colors.textMain]">
-            <mat-icon svgIcon="github"></mat-icon>
-          </a>
-          <a href="#" class="p-3 rounded-full border transition-colors hover:bg-[#03DAC6] hover:text-black"
-             [ngClass]="[colors.border, colors.textMain]">
-            <mat-icon svgIcon="open-in-new"></mat-icon>
-          </a>
+          @for (hyper of project.hyperlinks; track hyper) {
+            <a [href]="hyper.url"
+               class="h-13 w-13 rounded-full border transition-colors hover:text-black flex items-center justify-center hover:bg-[#BB86FC]"
+               [ngClass]="[colors.border, colors.textMain]">
+              <mat-icon [svgIcon]="hyper.icon"></mat-icon>
+            </a>
+          }
         </div>
       </div>
     </div>
@@ -99,18 +98,12 @@
         <div class="p-6 rounded border" [ngClass]="[colors.surface, colors.border]">
           <h3 class="font-bold mb-4" [ngClass]="colors.textMain">Project Info</h3>
           <ul class="space-y-4 font-mono text-sm">
-            <li class="flex justify-between">
-              <span [ngClass]="colors.textMuted">Year</span>
-              <span [ngClass]="colors.textMain">2024</span>
-            </li>
-            <li class="flex justify-between">
-              <span [ngClass]="colors.textMuted">Role</span>
-              <span [ngClass]="colors.textMain">Lead Dev</span>
-            </li>
-            <li class="flex justify-between">
-              <span [ngClass]="colors.textMuted">Status</span>
-              <span [ngClass]="colors.accent">Completed</span>
-            </li>
+            @for (item of project.projectInfo | keyvalue; track item) {
+              <li class="flex justify-between">
+                <span [ngClass]="colors.textMuted">{{item.key}}</span>
+                <span [ngClass]="item.key == 'Status' ? colors.accent : colors.textMain">{{item.value}}</span>
+              </li>
+            }
           </ul>
         </div>
       </div>

@@ -1,5 +1,5 @@
 import {Component, inject} from '@angular/core';
-import {ProjectCategory, ProjectData} from '../../../../data/services/project-data';
+import {HyperLinkType, ProjectCategory, ProjectData} from '../../../../data/services/project-data';
 import {ProjectCard} from '../project-card/project-card';
 import {PageHeader} from '../../../../shared/page-header/page-header';
 import {MatIcon} from '@angular/material/icon';
@@ -21,4 +21,5 @@ export class Projects {
 
   protected readonly colors = colors;
   protected readonly ProjectCategory = ProjectCategory;
+  protected readonly HyperLinkType = HyperLinkType;
 }

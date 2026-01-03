@@ -162,6 +162,18 @@ body {
   }
 }
 
+.w-13 {
+  width: calc(var(--spacing) * 13);
+}
+
+.h-13 {
+  height: calc(var(--spacing) * 13);
+}
+
+.w-16 {
+  width: calc(var(--spacing) * 16);
+}
+
 .grow-hover { transition: all .2s ease-in-out; }
 .grow-hover:hover { transform: scale(1.3); }
 

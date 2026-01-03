@@ -21,7 +21,7 @@ export class ProjectData {
       id: "micropython-tmf882x",
       title: "MicroPython Library for TMF882X ToF Sensors",
       shortDesc: "An open-source MicroPython library for interfacing with the TMF882X series of Time-of-Flight laser distance sensors.",
-      longDesc: "This project provides a robust, production-ready MicroPython driver for the AMS TMF8820, TMF8821, and TMF8828 sensors. It handles complex I2C register mappings and provides a high-level API to access multi-zone distance data, making advanced laser sensing accessible for embedded developers.",
+      longDesc: "This project provides a robust, production-ready MicroPython driver for the AMS TMF8820 and TMF8821 sensors. It handles complex I2C register mappings and provides a high-level API to access multi-zone distance data, making advanced laser sensing accessible for embedded developers.",
       type: "Embedded & Driver Development",
       tags: ["Open Source", "MicroPython", "Embedded", "I2C"],
       features: [
@@ -31,7 +31,18 @@ export class ProjectData {
         "Interrupt-driven data processing for low power"
       ],
       imgSrc: null,
-      category: ProjectCategory.PROJECTS
+      category: ProjectCategory.PROJECTS,
+      hyperlinks: [
+        {
+          type: HyperLinkType.GITHUB,
+          url: "https://github.com/K1ngGrim/tmf882X_micropython",
+          icon: "github",
+        }
+      ],
+      projectInfo: {
+        "Year": "2023",
+        "Status": "Completed",
+      }
     },
     {
       id: "thesis-word-addin",
@@ -47,7 +58,13 @@ export class ProjectData {
         "Seamless integration with MS Word via Office.js"
       ],
       imgSrc: null,
-      category: ProjectCategory.ACADEMIC
+      category: ProjectCategory.ACADEMIC,
+      hyperlinks: [],
+      projectInfo: {
+        "Year": "2025",
+        "Role": "Author & Developer",
+        "Status": "Completed",
+      }
     },
     {
       id: "whistledrop",
@@ -63,7 +80,14 @@ export class ProjectData {
         "Secure encrypted document management"
       ],
       imgSrc: null,
-      category: ProjectCategory.PROJECTS
+      category: ProjectCategory.PROJECTS,
+      hyperlinks: [],
+      projectInfo: {
+        "Year": "2025",
+        "Purpose": "Student Project",
+        "Role": "Backend Developer",
+        "Status": "Completed",
+      }
     }
   ];
 
@@ -73,6 +97,10 @@ export class ProjectData {
 
   public getProjectById(id: string): Project | null {
     return this.projects.find(p => p.id === id) || null;
+  }
+
+  hasHyperLink(project: Project, type: HyperLinkType) {
+    return project.hyperlinks.find(link => link.type === type);
   }
 
 
@@ -88,6 +116,14 @@ export interface Project {
   imgSrc: string | null;
   category: ProjectCategory;
   type: string;
+  hyperlinks: { type: HyperLinkType; url: string; icon: string}[];
+  projectInfo?: {[key: string]: string};
+}
+
+export enum HyperLinkType {
+  GITHUB = 'github',
+  DOCUMENTATION = 'documentation',
+  OTHER = 'other'
 }
 
 export enum ProjectCategory {
