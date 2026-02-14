@@ -86,8 +86,27 @@ export class ProjectData {
         "Year": "2025",
         "Purpose": "Student Project",
         "Role": "Backend Developer",
+        "Contributors": "Chris Jemming",
         "Status": "Completed",
       }
+    },
+    {
+      id: "modelcomputer",
+      title: "ModelComputer – In-Browser CPU & Assembler Simulator",
+      shortDesc: "Ein interaktiver, webbasierter Simulator für einen einfachen Prozessor mit integriertem Code-Editor, Assembler und Debugger.",
+      longDesc: "ModelComputer ist ein browserbasiertes Lern- und Prototyping-Tool, das eine kleine, von‑Hand definierte Assemblersprache, einen Editor mit Syntax-Highlighting (Monaco), einen Assembler/Compiler und eine virtuelle CPU kombiniert. Benutzer können Assembler-Code schreiben, bauen, ausführen und schrittweise debuggen. Die Architektur trennt Editor, Compiler und Prozessor in unabhängige Services (z. B. CompilerService, ProcessorService, LoggingService) und nutzt Angular (Standalone Components), Monaco Editor, Angular Material und Tailwind für UI/Styling. Das System eignet sich für Lehre, Experimente mit CPU‑Designs und zum Veranschaulichen von Laufzeit- und Debugging-Konzepten.",
+      type: "Frontend / Educational Tool",
+      tags: ["Angular", "TypeScript", "Monaco Editor", "Web Simulator", "Assembler", "Angular Material", "TailwindCSS"],
+      features: ["In-Browser Code-Editor mit Monaco (Syntax-Highlighting, Reformat)", "Assembler/Build-Pipeline: Text → Maschinencode (via CompilerService)", "Virtuelle CPU: Ausführen, Stop, Reset, Schritt-für-Schritt Debugging", "Debug-Integration: Hervorheben der aktuellen Ausführungszeile im Editor", "Logging-Konsole mit Laufzeitmeldungen (via LoggingService)", "Binär-/Hex-Formatierungstools (z. B. formatBin)", "Standalone Angular-Architektur (Components + Services) – leicht erweiterbar"],
+      imgSrc: null,
+      category: ProjectCategory.PROJECTS,
+      hyperlinks: [],
+      projectInfo: {
+        "Year": "2026",
+        "Role": "Developer",
+        "Purpose": "Lernprojekt",
+        "Status": "Prototype",
+      },
     }
   ];
 
