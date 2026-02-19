@@ -104,11 +104,24 @@
         <div class="p-6 rounded border" [ngClass]="[colors.surface, colors.border]">
           <h3 class="font-bold mb-4" [ngClass]="colors.textMain">Project Info</h3>
           <ul class="space-y-4 font-mono text-sm">
-            @for (item of project.projectInfo | keyvalue; track item) {
-              <li class="flex justify-between">
-                <span [ngClass]="colors.textMuted">{{item.key}}</span>
-                <span [ngClass]="item.key == 'Status' ? colors.accent : colors.textMain">{{item.value}}</span>
-              </li>
+            @for (item of project.projectInfo; track item) {
+              @if (item.type !== ProjectInfoType.Contributor) {
+                <li class="flex justify-between">
+                  <span [ngClass]="colors.textMuted">{{item.label}}</span>
+                  <span [ngClass]="item.label == 'Status' ? colors.accent : colors.textMain">{{item.value}}</span>
+                </li>
+              } @else {
+                <a href="{{item.link}}" target="_blank" rel="noopener noreferrer">
+                   class="flex justify-between transition-colors hover:text-black hover:bg-[#BB86FC] px-3 py-2 rounded"
+                   [ngClass]="[colors.border, colors.textMain]">
+                  <li class="flex justify-between">
+                    <span [ngClass]="colors.textMuted">{{item.label}}</span>
+                    <span [ngClass]="item.label == 'Status' ? colors.accent : colors.textMain">{{item.value}}</span>
+                  </li>
+                </a>
+
+              }
+
             }
           </ul>
         </div>

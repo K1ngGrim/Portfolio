@@ -39,10 +39,10 @@ export class ProjectData {
           icon: "github",
         }
       ],
-      projectInfo: {
-        "Year": "2023",
-        "Status": "Completed",
-      }
+      projectInfo: [
+        { label: "Year", value: "2023", type: "text", order: 1 },
+        { label: "Status", value: "Completed", type: "text", order: 2 },
+      ]
     },
     {
       id: "thesis-word-addin",
@@ -60,11 +60,11 @@ export class ProjectData {
       imgSrc: null,
       category: ProjectCategory.ACADEMIC,
       hyperlinks: [],
-      projectInfo: {
-        "Year": "2025",
-        "Role": "Author & Developer",
-        "Status": "Completed",
-      }
+      projectInfo: [
+        { label: "Year", value: "2025", type: "text", order: 1 },
+        { label: "Role", value: "Author & Developer", type: "text", order: 2 },
+        { label: "Status", value: "Completed", type: "text", order: 3 },
+      ];
     },
     {
       id: "whistledrop",
@@ -82,13 +82,13 @@ export class ProjectData {
       imgSrc: null,
       category: ProjectCategory.PROJECTS,
       hyperlinks: [],
-      projectInfo: {
-        "Year": "2025",
-        "Purpose": "Student Project",
-        "Role": "Backend Developer",
-        "Contributors": "Chris Jemming",
-        "Status": "Completed",
-      }
+      projectInfo: [
+        { label: "Year", value: "2025", type: "text", order: 1 },
+        { label: "Purpose", value: "Student Project", type: "text", order: 2 },
+        { label: "Role", value: "Backend Developer", type: "text", order: 3 },
+        { label: "Contributors", value: "Chris Jemming" } as ContributorInfo,
+        { label: "Status", value: "Completed", type: "text", order: 5 },
+      ]
     },
     {
       id: "modelcomputer",
@@ -101,12 +101,12 @@ export class ProjectData {
       imgSrc: null,
       category: ProjectCategory.PROJECTS,
       hyperlinks: [],
-      projectInfo: {
-        "Year": "2026",
-        "Role": "Developer",
-        "Purpose": "Lernprojekt",
-        "Status": "Prototype",
-      },
+      projectInfo: [
+        { label: "Year", value: "2026", type: "text", order: 1 },
+        { label: "Role", value: "Developer", type: "text", order: 2 },
+        { label: "Purpose", value: "Lernprojekt", type: "text", order: 3 },
+        { label: "Status", value: "Prototype", type: "text", order: 4 },
+      ],
     }
   ];
 
@@ -121,8 +121,6 @@ export class ProjectData {
   hasHyperLink(project: Project, type: HyperLinkType) {
     return project.hyperlinks.find(link => link.type === type);
   }
-
-
 }
 
 export interface Project {
@@ -136,7 +134,30 @@ export interface Project {
   category: ProjectCategory;
   type: string;
   hyperlinks: { type: HyperLinkType; url: string; icon: string}[];
-  projectInfo?: {[key: string]: string};
+  projectInfo?: ProjectInfo[];
+}
+
+export interface ProjectInfo {
+  label: string;
+  value: string;
+  type: string;
+  order: number;
+}
+
+export class ContributorInfo implements ProjectInfo{
+  label: string = "Contributor";
+  order: number = 999;
+  type: string = ProjectInfoType.Contributor;
+  value: string = "";
+  link: string ="";
+}
+
+export enum ProjectInfoType {
+  Year = 'Year',
+  Role = 'Role',
+  Purpose = 'Purpose',
+  Status = 'Status',
+  Contributor = 'Contributor'
 }
 
 export enum HyperLinkType {

@@ -2,7 +2,7 @@ import {Component, inject, OnInit, signal} from '@angular/core';
 import {MarkdownComponent} from 'ngx-markdown';
 import {KeyValuePipe, NgClass} from '@angular/common';
 import {colors} from '../../../../app';
-import {Project, ProjectData} from '../../../../data/services/project-data';
+import {ContributorInfo, Project, ProjectData, ProjectInfoType} from '../../../../data/services/project-data';
 import {ActivatedRoute, Router} from '@angular/router';
 import {Projects} from '../projects/projects';
 import {MatIcon} from '@angular/material/icon';
@@ -39,4 +39,6 @@ export class ProjectDetail implements OnInit{
   }
 
   protected readonly colors = colors;
+  protected readonly ContributorInfo = ContributorInfo;
+  protected readonly ProjectInfoType = ProjectInfoType;
 }
