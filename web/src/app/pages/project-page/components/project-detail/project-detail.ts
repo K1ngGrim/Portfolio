@@ -11,6 +11,7 @@ import {
   StrapiProject
 } from '../../../../../../projects/strapi-lib/src/model/strapi-project';
 import {OrderByPipe} from '../../../../shared/pipes/order-by-pipe';
+import {environment} from '../../../../../environments/environment';
 
 @Component({
   selector: 'app-project-detail',
@@ -56,4 +57,5 @@ export class ProjectDetail implements OnInit{
   protected readonly ProjectInfoEntryTypeEnum = ProjectInfoEntryTypeEnum;
   protected readonly ContentBlockTypeEnum = ContentBlockTypeEnum;
   protected readonly castToTextBlock = castToTextBlock;
+  protected readonly environment = environment;
 }
