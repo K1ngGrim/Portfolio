@@ -15,7 +15,7 @@ import {MatIcon} from '@angular/material/icon';
 })
 export class ProjectCard {
 
-  readonly id = input.required<string>();
+  readonly id = input.required<string | number | any>();
   readonly title = input.required<string>();
   readonly desc = input.required<string>();
   readonly tech = input.required<string[]>();

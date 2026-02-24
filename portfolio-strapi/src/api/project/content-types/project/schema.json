@@ -1,0 +1,69 @@
+{
+  "kind": "collectionType",
+  "collectionName": "projects",
+  "info": {
+    "singularName": "project",
+    "pluralName": "projects",
+    "displayName": "Project"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "type": {
+      "type": "enumeration",
+      "required": true,
+      "default": "Projects",
+      "enum": [
+        "Projects",
+        "Academic"
+      ]
+    },
+    "category": {
+      "type": "string",
+      "required": true
+    },
+    "coverImg": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "description": {
+      "type": "text",
+      "required": true
+    },
+    "tags": {
+      "type": "string"
+    },
+    "info": {
+      "type": "component",
+      "component": "project.info",
+      "repeatable": true
+    },
+    "key_features": {
+      "type": "component",
+      "component": "project.features",
+      "repeatable": true
+    },
+    "blocks": {
+      "type": "dynamiczone",
+      "components": [
+        "project-blocks.text-block",
+        "project-blocks.image-block"
+      ],
+      "required": true
+    },
+    "hyperlinks": {
+      "type": "component",
+      "component": "project.hyperlink",
+      "repeatable": true
+    }
+  }
+}

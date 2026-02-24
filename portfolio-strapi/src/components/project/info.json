@@ -1,0 +1,35 @@
+{
+  "collectionName": "components_project_infos",
+  "info": {
+    "displayName": "Info"
+  },
+  "options": {},
+  "attributes": {
+    "label": {
+      "type": "string",
+      "required": true
+    },
+    "value": {
+      "type": "string",
+      "required": true
+    },
+    "type": {
+      "type": "enumeration",
+      "required": false,
+      "default": "Plain",
+      "enum": [
+        "Contributor",
+        "Plain",
+        "Status"
+      ]
+    },
+    "link": {
+      "type": "string"
+    },
+    "order": {
+      "type": "integer",
+      "default": 0
+    }
+  },
+  "config": {}
+}

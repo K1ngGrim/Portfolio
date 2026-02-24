@@ -1,18 +1,24 @@
 import {Component, inject, OnInit, signal} from '@angular/core';
-import {MarkdownComponent} from 'ngx-markdown';
-import {KeyValuePipe, NgClass} from '@angular/common';
+import {NgClass, NgOptimizedImage} from '@angular/common';
 import {colors} from '../../../../app';
-import {ContributorInfo, Project, ProjectData, ProjectInfoType} from '../../../../data/services/project-data';
 import {ActivatedRoute, Router} from '@angular/router';
-import {Projects} from '../projects/projects';
 import {MatIcon} from '@angular/material/icon';
+import {BASE_PATH, ProjectInfoEntryTypeEnum, ProjectService} from '../../../../../../projects/strapi-lib/src/lib';
+import {lastValueFrom} from 'rxjs';
+import {
+  castToTextBlock,
+  ContentBlockTypeEnum,
+  StrapiProject
+} from '../../../../../../projects/strapi-lib/src/model/strapi-project';
+import {OrderByPipe} from '../../../../shared/pipes/order-by-pipe';
 
 @Component({
   selector: 'app-project-detail',
   imports: [
     NgClass,
     MatIcon,
-    KeyValuePipe
+    OrderByPipe,
+    NgOptimizedImage
   ],
   templateUrl: './project-detail.html',
   styleUrl: './project-detail.scss',
@@ -20,17 +26,25 @@ import {MatIcon} from '@angular/material/icon';
 export class ProjectDetail implements OnInit{
 
   private readonly router = inject(Router);
-  private readonly projectService = inject(ProjectData);
   private readonly activatedRoute = inject(ActivatedRoute);
+  public readonly basePath = inject(BASE_PATH);
 
-  public readonly project = signal<Project | null>(null);
+  private readonly projectControllerService = inject(ProjectService);
+
+  public readonly project = signal<StrapiProject | null>(null);
 
   async ngOnInit() {
     let projectId = this.activatedRoute.snapshot.paramMap.get('id');
 
     if (projectId) {
-      const proj = this.projectService.getProjectById(projectId);
-      this.project.set(proj);
+      const responseData = await lastValueFrom(this.projectControllerService.projectGetProjectsById({
+        id: projectId,
+        populate: '*'
+      }));
+
+      console.log(responseData);
+
+      this.project.set(responseData.data as StrapiProject)
     }
   }
 
@@ -39,6 +53,7 @@ export class ProjectDetail implements OnInit{
   }
 
   protected readonly colors = colors;
-  protected readonly ContributorInfo = ContributorInfo;
-  protected readonly ProjectInfoType = ProjectInfoType;
+  protected readonly ProjectInfoEntryTypeEnum = ProjectInfoEntryTypeEnum;
+  protected readonly ContentBlockTypeEnum = ContentBlockTypeEnum;
+  protected readonly castToTextBlock = castToTextBlock;
 }

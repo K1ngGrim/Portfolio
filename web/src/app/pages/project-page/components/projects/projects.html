@@ -5,15 +5,15 @@
   </app-page-header>
 
   <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-12">
-    @for (project of projects.projects; track project.id) {
+    @for (project of projects(); track project.id) {
       <app-project-card
-        [id]="project.id"
+        [id]="project.documentId"
         [title]="project.title"
-        [desc]="project.shortDesc"
-        [tech]="project.tags"
-        [githubRef]="projects.hasHyperLink(project, HyperLinkType.GITHUB)?.url ?? ''"
+        [desc]="project.description"
+        [tech]="project.tags.split(',')"
+        [githubRef]="hasHyperLink(project, ProjectHyperlinkEntryTypeEnum.Github)"
       >
-        @if (project.category == ProjectCategory.ACADEMIC) {
+        @if (project.type == 'Academic') {
           <mat-icon project-icon svgIcon="school" class="text-custom-muted"></mat-icon>
         } @else {
           <mat-icon project-icon svgIcon="console-line" class="text-custom-warn"></mat-icon>

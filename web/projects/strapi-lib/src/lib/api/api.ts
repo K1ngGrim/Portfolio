@@ -1,0 +1,16 @@
+export * from './content-type-builder.service';
+import { ContentTypeBuilderService } from './content-type-builder.service';
+export * from './content-type-builder.serviceInterface';
+export * from './i18n.service';
+import { I18nService } from './i18n.service';
+export * from './i18n.serviceInterface';
+export * from './project.service';
+import { ProjectService } from './project.service';
+export * from './project.serviceInterface';
+export * from './upload.service';
+import { UploadService } from './upload.service';
+export * from './upload.serviceInterface';
+export * from './users-permissions.service';
+import { UsersPermissionsService } from './users-permissions.service';
+export * from './users-permissions.serviceInterface';
+export const APIS = [ContentTypeBuilderService, I18nService, ProjectService, UploadService, UsersPermissionsService];

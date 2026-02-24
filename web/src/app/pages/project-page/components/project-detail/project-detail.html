@@ -21,13 +21,13 @@
         <div>
           <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-medium mb-4 bg-opacity-10 border border-[#2C2C2C]"
                [ngClass]="[colors.surface, colors.accent]">
-            {{ project.type }}
+            {{ project.category }}
           </div>
           <h1 class="text-4xl md:text-5xl font-bold mb-4" [ngClass]="colors.textMain">
             {{ project.title }}
           </h1>
           <p class="text-xl max-w-2xl" [ngClass]="colors.textMuted">
-            {{ project.shortDesc }}
+            {{ project.description }}
           </p>
         </div>
         <div class="hidden md:flex gap-4">
@@ -50,25 +50,42 @@
     <div class="grid md:grid-cols-12 gap-12">
       <div class="md:col-span-8 space-y-10">
 
-        @if (project.imgSrc != null) {
+        @if (project.coverImg != null) {
           <div class="w-full h-64 md:h-96 rounded border flex items-center justify-center relative overflow-hidden group"
                [ngClass]="[colors.surface, colors.border]">
             <div class="absolute inset-0 bg-gradient-to-t from-[#121212] to-transparent opacity-60"></div>
             <div class="text-center z-10">
-              <p class="font-mono text-sm opacity-50" [ngClass]="colors.textMuted">[Project Screenshot Placeholder]</p>
+              {{project.coverImg.url}}
+              <img priority [ngSrc]="basePath + '/..' + project.coverImg.url" alt="{{ project.title }} cover image" class="object-cover w-full h-full group-hover:scale-105 transition-transform"
+                   fill>
             </div>
           </div>
         }
 
-        <section>
-          <h3 class="text-2xl font-bold mb-4 flex items-center gap-2" [ngClass]="colors.textMain">
-            <mat-icon svgIcon="information-outline" class="text-custom-primary"></mat-icon>
-            About the Project
-          </h3>
-          <p class="leading-relaxed text-lg" [ngClass]="colors.textMuted">
-            {{ project.longDesc }}
-          </p>
-        </section>
+
+        @for (section of project.blocks; track section.id) {
+          @if (section.__component == ContentBlockTypeEnum.TextBlock) {
+            @if (castToTextBlock(section); as block) {
+              <section>
+                @if (block.header) {
+                  <h3 class="text-2xl font-bold mb-4 flex items-center gap-2" [ngClass]="colors.textMain">
+                    @if (block.icon) {
+                      <mat-icon [svgIcon]="block.icon" class="text-custom-primary"></mat-icon>
+                    }
+
+                    {{block.header}}
+                  </h3>
+                }
+                <p class="leading-relaxed text-lg" [ngClass]="colors.textMuted">
+                  {{ block.text }}
+                </p>
+              </section>
+            }
+
+          }
+        }
+
+
 
         <section>
           <h3 class="text-2xl font-bold mb-4 flex items-center gap-2" [ngClass]="colors.textMain">
@@ -76,10 +93,10 @@
             Key Features
           </h3>
           <div class="grid sm:grid-cols-2 gap-4">
-            @for (feature of project.features; track feature; let i = $index) {
+            @for (feature of project.key_features??[]; track feature; let i = $index) {
               <div class="p-4 rounded border border-[#2C2C2C] flex items-center gap-3" [ngClass]="colors.surface">
                 <div class="w-2 h-2 rounded-full" [ngClass]="i % 2 === 0 ? 'bg-[#BB86FC]' : 'bg-[#03DAC6]'"></div>
-                <span [ngClass]="colors.textMuted">{{ feature }}</span>
+                <span [ngClass]="colors.textMuted">{{ feature.text }}</span>
               </div>
             }
           </div>
@@ -93,9 +110,9 @@
             Tech Stack
           </h3>
           <div class="flex flex-wrap gap-2">
-            @for (t of project.tags; track t) {
+            @for (tag of project.tags.split(','); track tag) {
               <span class="px-3 py-1 rounded text-sm font-mono border border-[#2C2C2C]" [ngClass]="[colors.bg, colors.textMain]">
-                {{ t }}
+                {{ tag }}
               </span>
             }
           </div>
@@ -104,24 +121,26 @@
         <div class="p-6 rounded border" [ngClass]="[colors.surface, colors.border]">
           <h3 class="font-bold mb-4" [ngClass]="colors.textMain">Project Info</h3>
           <ul class="space-y-4 font-mono text-sm">
-            @for (item of project.projectInfo; track item) {
-              @if (item.type !== ProjectInfoType.Contributor) {
+            @for (item of project.info??[] | orderBy: 'order'; track item) {
+              @if (item.type !== ProjectInfoEntryTypeEnum.Contributor) {
                 <li class="flex justify-between">
                   <span [ngClass]="colors.textMuted">{{item.label}}</span>
                   <span [ngClass]="item.label == 'Status' ? colors.accent : colors.textMain">{{item.value}}</span>
                 </li>
               } @else {
-                <a href="{{item.link}}" target="_blank" rel="noopener noreferrer">
-                   class="flex justify-between transition-colors hover:text-black hover:bg-[#BB86FC] px-3 py-2 rounded"
-                   [ngClass]="[colors.border, colors.textMain]">
+                @if (item) {
                   <li class="flex justify-between">
                     <span [ngClass]="colors.textMuted">{{item.label}}</span>
-                    <span [ngClass]="item.label == 'Status' ? colors.accent : colors.textMain">{{item.value}}</span>
+                    <span [ngClass]="item.label == 'Status' ? colors.accent : colors.textMain">
+                        <a href="{{item.link}}" target="_blank" rel="noopener noreferrer" class="justify-center flex">
+                          {{item.value}}
+                          <mat-icon svgIcon="open-in-new" style="transform: scale(0.5)"></mat-icon>
+                        </a>
+                      </span>
                   </li>
-                </a>
 
+                }
               }
-
             }
           </ul>
         </div>

@@ -1,0 +1,28 @@
+{
+  "collectionName": "components_project_hyperlinks",
+  "info": {
+    "displayName": "Hyperlink"
+  },
+  "options": {},
+  "attributes": {
+    "url": {
+      "type": "string",
+      "required": true
+    },
+    "icon": {
+      "type": "string",
+      "required": true
+    },
+    "type": {
+      "type": "enumeration",
+      "required": true,
+      "default": "Other",
+      "enum": [
+        "Github",
+        "Documentation",
+        "Other"
+      ]
+    }
+  },
+  "config": {}
+}
